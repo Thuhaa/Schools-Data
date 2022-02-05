@@ -11,14 +11,51 @@
  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <style type="text/css">
    	#map{
    		height: 600px;
+   		z-index: 0;
+   	}
+   	#controls{
+   		z-index: 1;
+   	}
+   	i{
+   		color: white;
+   	}
+   	#the-button{
+   		background: maroon;
+   		border: maroon;
+   		width: 35px;
+   		height: 35px;
+   		float: right;
+   	}
+   	select{
+   		width: 90%;
+   		height: 35px;
+   	}
+   	#get-directions{
+   		width: 100%;
+   		background: maroon;
+   		color: white;
+   		border: maroon;
+   		font-weight: bold;
+   		height: 30px;
    	}
    </style>
 </head>
 <body>
+	<div id="controls">
+		<select id="select-school">
+			{% for d in data_list %}
+			<option>{{ d.properties.institute }}</option>
+				
+			{% endfor %}
+		</select>
+		<button id="the-button" type="submit"><i class="fa fa-search"></i></button>
+		</div>
 	<div id="map">
+		
 		
 	</div>
 	<script type="text/javascript">
@@ -34,10 +71,11 @@
 		function onEachFeature(feature, layer) {
     if (feature.properties) {
         layer.bindPopup(
-        	"<div><p><b>Name: </b>"+feature.properties.institute+"</p><p><b>Courses: </b>"+feature.properties.courses+"</p><p><b>Code: </b>"+feature.properties.code+"</p><p><b>Street: </b>"+feature.properties.street+"</p><p><b>Ownership: </b>"+feature.properties.ownership+"</p></div>"
+        	"<div><p><b>Name: </b>"+feature.properties.institute+"</p><p><b>Courses: </b>"+feature.properties.courses+"</p><p><b>Code: </b>"+feature.properties.code+"</p><p><b>Street: </b>"+feature.properties.street+"</p><p><b>Ownership: </b>"+feature.properties.ownership+"</p><Button id='get-directions'>Get Directions</Button></div>"
         	);
     }
 }
-	</script>
+requestData();
+</script>
 </body>
 </html>
