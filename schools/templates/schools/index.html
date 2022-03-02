@@ -13,8 +13,11 @@
    crossorigin=""></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <style type="text/css">
+   	body{
+   		margin: 0;
+   	}
    	#map{
-   		height: 600px;
+   		height: 100vh;
    		z-index: 0;
    	}
    	#controls{
@@ -45,7 +48,7 @@
    </style>
 </head>
 <body>
-	<div id="controls">
+	<!-- <div id="controls">
 		<select id="select-school">
 			{% for d in data_list %}
 			<option>{{ d.properties.institute }}</option>
@@ -53,7 +56,7 @@
 			{% endfor %}
 		</select>
 		<button id="the-button" type="submit"><i class="fa fa-search"></i></button>
-		</div>
+		</div> -->
 	<div id="map">
 		
 		
